@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+
+    <!-- Container (About Section) -->
+
+
+<div id="about" class="container-fluid bg-transparents">
+    <div class="row">
+      <div class="col-sm-8">
+        <br>
+        <h2>About Us</h2>
+        <hr>
+        <h4><b>"Best Selection. Best Service."</b></h4>
+          <p>With constant development since 2020, this belief has made us into one of the
+          leading online shops for  computer accessories. We have set standards in the industry – always geared to customer
+          requirements. We are reliable partners for everyone; whether beginner or professional.</p>
+        <br>
+
+        <p>Apart from your satisfaction, your security is truly important to us. The service and the security regarding online
+          shopping with PcSort have already been tested comprehensively and awarded. To consistently fulfil our
+          customers´ expectations, we attach particular importance to the highest quality and security standards as far as the
+          website and internal processes are concerned. This is guaranteed by strict and regular testing carried out by independent
+          external institutes (TrustedShops, EHI). As a member of TrustedShops, our customer also receives buyer protection free
+          of charge.</p>
+      </div>
+      <div class="col-sm-4 p-5">
+        <img src="{% static 'image/about.png'%}" width="400px"  >
+      </div>
+    </div>
+  </div>
+  <hr>
+
+
+  <div class="container-fluid bg-transparent">
+    <div class="row">
+      <div class="col-sm-4">
+        <img src="{% static 'image/vm.jpg'%}" width="400px" >
+      </div>
+      <div class="col-sm-8">
+        <h2>Our Values</h2>
+        <hr>
+        <h4><strong>MISSION:</strong> </h4>To become a platform for enabling and ensuring wide access reach of world-class
+          technology in the country. We aim to introduce constant new, and intriguing products/ gadgets /accessories which will encourage
+          the customer to return regularly.<br>
+        <p><strong><h4>VISION:</h4></strong>To synergize the IT and e-commerce revolution in Nepal.</p>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
