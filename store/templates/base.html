@@ -5,92 +5,111 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <link href="{% static 'fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" type="text/css" href="{% static '/' %}">
 
-    <title>PcSort ( computer accesories Store )</title>
+    <link href="{% static 'css/design.css' %}" rel="stylesheet" type="text/css">
+
+
+    <title>Computer accesories Store</title>
 
 
 </head>
 
 <body>
-<br>
-<div class="head text-center bg-white">
-    <h6> Read about our response to COVID-19 - <a href="https://www.PCsort.com/COVID-19">FAQs</a></h6>
-</div>
-<hr>
+
+<style>
+
+        body{
+            background-image: url("{% static 'image/bg.jpg' %}");
+            background-position: center;
+            background-size: cover;
+        }
+        th,td,p,h1,h2,h3,h4,h5,h6{
+            color: #ff9900;
+        }
+
+</style>
+
+<h6 class="top text-center"> Read about our response to COVID-19 - <a href="/">FAQs</a></h6>
+
 
 <!-- navbar -->
+<header>
+    <nav class="navbar shrink-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-logo" href="/start"><img src="{% static 'image/lg.png'%}" width="70px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<nav class="one-edge-shadow sticky-top navbar navbar-expand-lg navbar-light bg-white">
-    <a class="navbar-logo" href="/"><img src="{% static 'image/logo.png'%}" width="100px"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto ">
+                <li class="nav-item">
+                    <a class="nav-link" href="/start">Home<span class="sr-only">(current)</span></a>
+                </li>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/store">Store <span class="sr-only">(current)</span></a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/store">Store<span class="sr-only">(current)</span></a>
+                </li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="/about">About Us<span class="sr-only">(current)</span></a>
-            </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/about">About Us<span class="sr-only">(current)</span></a>
+                </li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="/contact">Contact Us <span class="sr-only">(current)</span></a>
-            </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/contact">Contact Us<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
 
-        </ul>
+            <ul class="navbar-nav">
+                {% if request.session.customer %}
 
-        <ul class=" navbar-nav my-2 my-lg-0">
-
-
-            {% if request.session.customer %}
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Profile</a>
-                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/orders">My Orders<span class="sr-only">(current)</span></a>
-                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/logout">Logout<span class="sr-only">(current)</span></a>
-                </div>
-            </li>
-
-            {% else %}
-
-            <li class="nav-item ">
-                <a class="nav-link" href="/signup">Signup<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="/login">Login<span class="sr-only">(current)</span></a>
-            </li>
-            {% endif %}
+                <li class="nav-item dropdown ">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown"
+                       href="#" role="button"><i class="fa fa-user" aria-hidden="true"></i>  Account</a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/orders">My Orders</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                </li>
 
 
-            <li class="nav-item ">
-                <a class="nav-link" href="/cart">Cart
-                    <span class="badge badge-info">{{request.session.cart.keys|length}}</span>
-                    <span class="sr-only">(current)</span></a>
+                {% else %}
+
+                <li class="nav-item ">
+                    <a class="nav-link" href="/signup">Signup
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/login">Login
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                {% endif %}
 
 
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart"><i class="fa fa-shopping-bag" aria-hidden="true"> Cart</i>
+                        <span class="badge badge-info">{{request.session.cart.keys|length}}</span>
+                        <span class="sr-only">(current)</span></a>
+                </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><i class="fa fa-heart" aria-hidden="true"> Wishlist</i>
+                        <span class="badge badge-info">0</span>
+                        <span class="sr-only">(current)</span></a>
+                </li>
 
-        </ul>
-
-
-    </div>
-</nav>
-<hr>
-
+            </ul>
+        </div>
+    </nav>
+</header>
 
 {% block content %}
 
@@ -99,24 +118,46 @@
 
 <!-- FOOTER -->
 
+<footer class="page-footer text-center font-small mt-4 bg-dark" >
 
-<footer class="container">
-    <p class="dd">
-        &copy; PcSort 2020. All Rights Reserved. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a>
-    </p>
+    <hr class="my-3">
+
+    <!-- Social icons -->
+    <div class="pb-1">
+        <a href="https://www.facebook.com/" target="_blank">
+            <i class="fab fa-facebook-f mr-4"></i>
+        </a>
+
+        <a href="https://www.instagram.com/" target="_blank">
+            <i class="fab fa-instagram mr-4"></i>
+        </a>
+
+        <a href="https://twitter.com/" target="_blank">
+            <i class="fab fa-twitter mr-4"></i>
+        </a>
+    </div>
+    <!-- Social icons -->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-1 bg-dark"><p>© 2020 Copyright: <a href="/" target="_blank"> www.pcsort.com </a></p>
+    </div>
+    <!--/.Copyright-->
+
 </footer>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+<script crossorigin="anonymous"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script crossorigin="anonymous"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script crossorigin="anonymous" src="https://kit.fontawesome.com/5879ec68db.js"></script>
 
 
 </body>

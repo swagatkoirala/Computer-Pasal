@@ -1,20 +1,22 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password
-from store.models.customer import Customer
+from django.shortcuts import render, redirect
 from django.views import View
+from store.models.customer import Customer
 
 
 class Signup(View):
     def get(self, request):
-        return render(request, 'signup.html')
+        return render(request, 'signup.html', {})
 
     def post(self, request):
-        postData = request.POST
-        first_name = postData.get('firstname')
-        last_name = postData.get('lastname')
-        phone = postData.get('phone')
-        email = postData.get('email')
-        password = postData.get('password')
+
+        first_name = request.POST['firstname']
+        last_name = request.POST['lastname']
+        phone = request.POST['phone']
+        email = request.POST['email']
+        password = request.POST['password']
+
+
         # validation
         value = {
             'first_name': first_name,
@@ -22,6 +24,7 @@ class Signup(View):
             'phone': phone,
             'email': email
         }
+
         error_message = None
 
         customer = Customer(first_name=first_name,
@@ -35,13 +38,16 @@ class Signup(View):
             print(first_name, last_name, phone, email, password)
             customer.password = make_password(customer.password)
             customer.register()
-            return redirect('homepage')
+            return redirect('login')
         else:
             data = {
                 'error': error_message,
-                'values': value
+                'values': value,
+
             }
             return render(request, 'signup.html', data)
+
+
 
     def validateCustomer(self, customer):
         error_message = None;
@@ -66,3 +72,4 @@ class Signup(View):
         # saving
 
         return error_message
+

@@ -3,20 +3,23 @@
 
 {% block content %}
 
+
+
 <div class="container mt-4">
 
     <div class="p-4 m-4">
 
 
-        <div class="col-lg-5 rounded mx-auto border pt-4">
+        <div class="col-lg-5 rounded mx-auto border pt-4 bg-dark">
             <div class="text-center col">
 
                 <!-- <hr> -->
-                <div class="display-8">Create An Account</div>
+                <div class="display-8"><p>CREATE AN ACCOUNT</p></div>
                 <hr>
             </div>
-            <h3 hidden class="alert alert-light border rounded">Create An Account</h3>
-            <form action="/signup" method="POST">
+            <h3 class="alert alert-light border rounded" hidden>Create An Account</h3>
+
+            <form action="#" method="post">
 
                 {% csrf_token %}
 
@@ -27,51 +30,44 @@
                 {% endif %}
                 <!-- firstname -->
                 <div class="form-group">
-                    <label for="">First Name</label>
-                    <input type="text" name="firstname"
-                            value="{{values.first_name}}" class="form-control form-control-sm"
-                           placeholder="">
+                    <label for=""><p>First Name</p></label>
+                    <input class="form-control form-control-sm" name="firstname"
+                           placeholder="" type="text"
+                           value="{{values.first_name}}">
                 </div>
 
                 <!-- last name -->
                 <div class="form-group">
-                    <label for="">Last Name</label>
-                    <input type="text" name="lastname"
-                            value="{{values.last_name}}" class="form-control form-control-sm"
+                    <label for=""><p>Last Name</p></label>
+                    <input class="form-control form-control-sm" name="lastname"
+                           type="text" value="{{values.last_name}}"
                     >
                 </div>
 
                 <!-- phone -->
                 <div class="form-group">
-                    <label for="">Phone</label>
-                    <input type="text" name="phone"
-                            class="form-control form-control-sm"
-                           value="{{values.phone}}"
-                           placeholder="565698959">
+                    <label for=""><p>Phone</p></label>
+                    <input class="form-control form-control-sm" name="phone"
+                           placeholder="565698959"
+                           type="text"
+                           value="{{values.phone}}">
                 </div>
                 <!-- email -->
                 <div class="form-group">
-                    <label for="">Email</label>
-                    <input required type="email" name="email"
-                           value="{{values.email}}"
-                           class=" form-control-sm form-control" placeholder="example@gmail.com">
+                    <label for=""><p>Email</p></label>
+                    <input class=" form-control-sm form-control" name="email" placeholder="example@gmail.com"
+                           required
+                           type="email" value="{{values.email}}">
                 </div>
 
 
                 <!-- password -->
                 <div class="form-group">
-                    <label for="">Password</label>
-                    <input type="password"
-                           name="password"
+                    <label for=""><p>Password</p></label>
+                    <input class="form-control form-control-sm"
                            id=""
-                           class="form-control form-control-sm" placeholder="********">
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-                    <label class="custom-control-label" for="defaultLoginFormRemember">
-                        By Creating an account you agree to our
-                        <a href="#"> Terms & Privacy</a></label>
+                           name="password"
+                           placeholder="********" type="password">
                 </div>
 
                 <hr>
@@ -84,5 +80,6 @@
         </div>
     </div>
 </div>
+
 
 {% endblock %}

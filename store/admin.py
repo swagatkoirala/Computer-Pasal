@@ -5,6 +5,7 @@ from .models.customer import Customer
 from .models.orders import Order
 
 
+
 class AdminProduct(admin.ModelAdmin):
     list_display = ['name', 'price', 'category']
 
