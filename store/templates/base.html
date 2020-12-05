@@ -43,7 +43,7 @@
 
 <!-- navbar -->
 <header>
-    <nav class="navbar shrink-top navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-logo" href="/start"><img src="{% static 'image/lg.png'%}" width="70px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,36 +115,26 @@
 {% block content %}
 
 {% endblock %}
-
-
-<!-- FOOTER -->
-
-<footer class="page-footer text-center font-small mt-4 bg-dark" >
-
-    <hr class="my-3">
-
-    <!-- Social icons -->
-    <div class="pb-1">
-        <a href="https://www.facebook.com/" target="_blank">
-            <i class="fab fa-facebook-f mr-4"></i>
-        </a>
-
-        <a href="https://www.instagram.com/" target="_blank">
-            <i class="fab fa-instagram mr-4"></i>
-        </a>
-
-        <a href="https://twitter.com/" target="_blank">
-            <i class="fab fa-twitter mr-4"></i>
-        </a>
+<hr/>
+<!-- Footer-->
+<footer class="footer py-4 bg-dark">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 text-lg-left text-warning">Copyright © Your Website 2020</div>
+            <div class="col-lg-3 my-3 my-lg-0">
+                <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="col-lg-4 text-lg-right">
+                <a class="mr-3" href="#!">Privacy Policy</a>
+                <a href="#!">Terms of Use</a>
+            </div>
+        </div>
     </div>
-    <!-- Social icons -->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-1 bg-dark"><p>© 2020 Copyright: <a href="/" target="_blank"> www.pcsort.com </a></p>
-    </div>
-    <!--/.Copyright-->
-
 </footer>
+
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

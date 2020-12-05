@@ -15,149 +15,249 @@
             -o-background-size: cover;
             background-size: cover;
         }
+
+        .page-section {
+          padding-top: 0rem;
+          padding-bottom: 0rem;
+        }
+
+        .page-section .team-member {
+          max-width: 18rem;
+        }
+
+        .page-section .team-member img {
+          max-width: 12rem;
+        }
+
+        .showcase .showcase-text {
+          padding: 3rem;
+        }
+
+        .showcase .showcase-img {
+          min-height: 30rem;
+          background-position: center;
+          background-size: cover;
+        }
+
+        @media (min-width: 768px) {
+          .showcase .showcase-text {
+            padding: 7rem;
+          }
+        }
+
+
+
     </style>
 
+    <!-- carousel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
 
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-
-        <div class="carousel-item active" style="background-image: url('{% static 'image/1.jpg' %}')">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-item active" style="background-image: url('{% static 'image/1.jpg' %}')">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
             </div>
-        </div>
 
-        <div class="carousel-item" style="background-image: url('{% static 'image/4.jpg' %}')">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-item" style="background-image: url('{% static 'image/4.jpg' %}')">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
             </div>
-        </div>
 
-        <div class="carousel-item" style="background-image: url('{% static 'image/3.jpg' %}')">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-item" style="background-image: url('{% static 'image/3.jpg' %}')">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
             </div>
-        </div>
 
-        <div class="carousel-item" style="background-image: url('{% static 'image/2.jpg' %}')">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-item" style="background-image: url('{% static 'image/2.jpg' %}')">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
             </div>
-        </div>
 
-        <div class="carousel-item" style="background-image: url('{% static 'image/6.jpg' %}')">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-item" style="background-image: url('{% static 'image/6.jpg' %}')">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
             </div>
-        </div>
 
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-    </div>
+            <div class="masthead-subheading">Welcome To Our Studio!</div>
+            <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
 </header>
 <hr/>
 
 <!-- Services-->
-        <section class="page-section bg-dark" id="services">
-            <br/>
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Services</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-                <br/>
-                <div class="row text-center">
-                    <div class="col-md-4">
+<section class="page-section bg-dark" id="services">
+    <br/>
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Services</h2>
+            <h3 class="section-subheading text-muted">We offer following services.</h3>
+        </div>
+        <br/>
+        <div class="row text-center">
+            <div class="col-md-3">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-secondary"></i>
                             <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">E-Commerce</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
-                    <div class="col-md-4">
+                <h4 class="my-3">E-Commerce</h4>
+                <p class="text-muted">Also known as electronic commerce or internet commerce, refers to the buying and
+                    selling of goods or services using the internet.</p>
+            </div>
+            <div class="col-md-3">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-secondary"></i>
+                            <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                        </span>
+                <h4 class="my-3">Easy to use</h4>
+                <p class="text-muted">Usability, or User Experience, is the art of making your website simple,
+                    user-friendly and easy to use.</p>
+            </div>
+            <div class="col-md-3">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-secondary"></i>
                             <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">Responsive Design</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
-                    <div class="col-md-4">
+                <h4 class="my-3">Responsive Design</h4>
+                <p class="text-muted">Responsive design is a graphic user interface (GUI) design approach used to create
+                    content that adjusts smoothly to various screen sizes.</p>
+            </div>
+            <div class="col-md-3">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-secondary"></i>
                             <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">Web Security</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
-                </div>
+                <h4 class="my-3">Web Security</h4>
+                <p class="text-muted">Web security is important to keeping hackers and cyber-thieves from accessing
+                    sensitive information.</p>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
 <hr/>
 
 
+<!-- Image Showcases -->
+<section class="showcase bg-dark">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-lg-6 order-lg-2 text-white showcase-img"
+                 style="background-image: url('{% static 'image/ecommerce.jpg' %}')"></div>
+            <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                <h2>E-Commerce</h2>
+                <p class="lead mb-0">Ecommerce, also known as electronic commerce or internet commerce, refers to the
+                    buying and selling of goods or services using the internet, and the transfer of money and data to
+                    execute these transactions. Ecommerce is often used to refer to the sale of physical products
+                    online, but it can also describe any kind of commercial transaction that is facilitated through the
+                    internet.</p>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-lg-6 text-white showcase-img"
+                 style="background-image: url('{% static 'image/easy.jpg' %}');"></div>
+            <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                <h2>Easy to Use</h2>
+                <p class="lead mb-0">The term for making a website easy to use is known as “usability”. We consider
+                    usability throughout the design and development process. ... We clearly divide your website into
+                    easy to understand sections. The alternative is a website that is confusing and cluttered and
+                    difficult to understand.</p>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-lg-6 order-lg-2 text-white showcase-img"
+                 style="background-image: url('{% static 'image/responsive1.jpg' %}');"></div>
+            <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                <h2>Fully Responsive Design</h2>
+                <p class="lead mb-0">A fully responsive website will rescale itself to preserve the user experience and
+                    look and feel across all devices — with no irritating zooming, scrolling or resizing.So a
+                    website must 'respond' to the device it's viewed on</p>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-lg-6 text-white showcase-img"
+                 style="background-image: url('{% static 'image/security1.jpg' %}');"></div>
+            <div class="col-lg-6 my-auto showcase-text">
+                <h2>Web Security</h2>
+                <p class="lead mb-0">Web security is also known as “Cybersecurity”. It basically means protecting a
+                    website or web application by detecting, preventing and responding to cyber threats.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<hr/>
 
 
- <!-- Team-->
-        <section class="page-section bg-dark" id="team">
-            <br/>
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="/" alt="" />
-                            <h4>Swagat Koirala</h4>
-                            <p class="text-muted">Lead Developer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="/" alt="" />
-                            <h4>Nuraj Panthi</h4>
-                            <p class="text-muted">Lead Database Handler</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="/" alt="" />
-                            <h4>Ujjwal Joshi</h4>
-                            <p class="text-muted">Lead Designer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="/" alt="" />
-                            <h4>Krishna Paudel</h4>
-                            <p class="text-muted">Lead Marketer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+<!-- Team-->
+<section class="page-section text-center bg-dark" id="team">
+    <br/>
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+            <h3 class="section-subheading text-muted">We have offered lots of effort in developing this store.</h3>
+        </div>
+        <br/><br/>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="team-member mx-auto mb-5 mb-lg-0">
+                    <img class="img-fluid rounded-circle" src="{% static 'image/swagat.jpg'%}" alt=""><br/>
+                    <h4>Swagat Koirala</h4>
+                    <p class="text-muted">Lead Developer</p>
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
-        </section>
+            <div class="col-lg-3">
+                <div class="team-member mx-auto mb-5 mb-lg-0">
+                    <img class="img-fluid rounded-circle" src="{% static 'image/nuraj.jpg'%}" alt=""/>
+                    <h4>Nuraj Panthi</h4>
+                    <p class="text-muted">Lead Database Handler</p>
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="team-member mx-auto mb-5 mb-lg-0">
+                    <img class="img-fluid rounded-circle" src="{% static 'image/ujjwal.jpg'%}" alt=""/>
+                    <h4>Ujjwal Joshi</h4>
+                    <p class="text-muted">Lead Designer</p>
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="team-member mx-auto mb-5 mb-lg-0">
+                    <img class="img-fluid rounded-circle" src="{% static 'image/krishna.jpg'%}" alt=""/>
+                    <h4>Krishna Paudel</h4>
+                    <p class="text-muted">Lead Marketer</p>
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">We, the our site, are the bunch of
+                geeks with a passion to get things done correctly. Our site has a mission to ensure better web
+                experience by providing digital products at affordable cost which customer can't refuse.</p></div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}
