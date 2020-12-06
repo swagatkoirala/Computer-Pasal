@@ -7,7 +7,8 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     price = models.IntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=0)
-    description = models.CharField(max_length=1000, default='')
+    brands = models.CharField(max_length=100, default='')
+    description = models.TextField()
     image = models.ImageField(upload_to='uploads/products/')
 
     @staticmethod

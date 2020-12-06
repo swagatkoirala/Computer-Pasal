@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 {% load cart %}
 {% load custom_filter %}
-<div class="container">
+<div class="container text-center">
     <div class="border rounded p-4 m-4 bg-dark">
         <p class="display-4 pl-4 ml-4">Your Cart</p>
         <hr>
@@ -17,6 +16,7 @@
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Total</th>
+                <th>Add/Remove</th>
             </tr>
             </thead>
             <tbody>
@@ -24,15 +24,25 @@
             {% for product in products %}
             <tr>
                 <td>{{forloop.counter}}</td>
-                <td><img alt="" class="rounded-circle" src="{{product.image.url}}" style="height: 80px;"></td>
+                <td><img alt="" class="rounded-circle" src="{{product.image.url}}" style="height: 50px;"></td>
                 <td>{{product.name}}</td>
                 <td>{{product.price|currency}}</td>
-                <td>{{product|cart_quantity:request.session.cart}}</td>
+                <td >{{product|cart_quantity:request.session.cart}}</td>
                 <td>{{product|price_total:request.session.cart|currency}}</td>
                 <td>
-                    <input hidden name='product' type="text" value='{{product.id}}'>
-                    <input hidden name='remove' type="text" value='True'>
-                    <i aria-hidden="true" class="fa fa-trash" type=submit></i></td>
+                    <form action="/#{{product.id}}" class="col-2 " method="post">
+                        {% csrf_token %}
+                        <input hidden name='product' type="text" value='{{product.id}}'>
+                        <input class="btn btn-info" type="submit" value="Add">
+                    </form>
+                    <form action="/#{{product.id}}" class="col-2 " method="post">
+                        {% csrf_token %}
+                        <input hidden name='product' type="text" value='{{product.id}}'>
+                        <input hidden name='remove' type="text" value='True'>
+                        <input class="btn btn-danger" type="submit" value="Remove">
+                    </form>
+
+                    </td>
             </tr>
 
 
@@ -55,7 +65,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- checkout -->
 
@@ -93,6 +102,4 @@
                     </form>
                 </div>
             </div>
-
-
-            {% endblock %}
+{% endblock %}

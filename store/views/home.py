@@ -22,7 +22,6 @@ class Index(View):
                         cart[product] = quantity - 1
                 else:
                     cart[product] = quantity + 1
-
             else:
                 cart[product] = 1
         else:
@@ -31,7 +30,7 @@ class Index(View):
 
         request.session['cart'] = cart
         print('cart', request.session['cart'])
-        return redirect('store')
+        return redirect('cart')
 
     def get(self, request):
         if "category" not in request.get_full_path()[1:]:
@@ -58,4 +57,3 @@ def store(request):
 
     print('you are : ', request.session.get('email'))
     return render(request, 'index.html', data)
-
