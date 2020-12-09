@@ -1,11 +1,13 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import render
 from django.views import View
 
-
 # Create your views here.
+from django.views.generic import DetailView
 
-class Details(View):
-    def get(self, request):
-        context = {}
-        return render(request, 'product-details.html', context)
+from store.models import Product
+
+
+class Details(DetailView):
+    model = Product
+    template_name = "product-details.html"
 

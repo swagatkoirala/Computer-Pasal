@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 from .category import Category
 
@@ -8,8 +9,16 @@ class Product(models.Model):
     price = models.IntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=0)
     brands = models.CharField(max_length=100, default='')
+    slug = models.SlugField()
     description = models.TextField()
+
     image = models.ImageField(upload_to='uploads/products/')
+
+    def get_absolute_url(self):
+        return reverse("product-details", kwargs={
+            'slug': self.slug
+        })
+
 
     @staticmethod
     def get_products_by_id(ids):
@@ -25,4 +34,3 @@ class Product(models.Model):
             return Product.objects.filter(category=category_id)
         else:
             return Product.get_all_products()
-

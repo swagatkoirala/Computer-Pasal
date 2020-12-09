@@ -1,29 +1,28 @@
 from django.contrib import admin
-from .models.product import Product
-from .models.category import Category
-from .models.customer import Customer
-from .models.orders import Order
+
+from .models import Product, Category, Customer, Order
+
+admin.site.site_header = "Swagat Site"
 
 
-
-class AdminProduct(admin.ModelAdmin):
-    list_display = ['name', 'price', 'category']
-
-
-class AdminCategory(admin.ModelAdmin):
-    list_display = ['name']
+@admin.register(Product)
+class CustProduct(admin.ModelAdmin):
+    list_display = ('name', 'category', 'brands')
+    ordering = ['name']
 
 
-class AdminCustomer(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name', 'phone', 'email']
+@admin.register(Category)
+class CustCategory(admin.ModelAdmin):
+    ordering = ['name']
 
 
-class AdminOrder(admin.ModelAdmin):
-    list_display = ['product', 'customer', 'quantity', 'price', 'date', 'status']
+@admin.register(Customer)
+class CustCustomer(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'phone', 'email')
+    ordering = ['first_name']
 
 
-# Register your models here.
-admin.site.register(Product, AdminProduct)
-admin.site.register(Category, AdminCategory)
-admin.site.register(Customer, AdminCustomer)
-admin.site.register(Order, AdminOrder)
+@admin.register(Order)
+class CustOrder(admin.ModelAdmin):
+    list_display = ('product', 'customer', 'quantity', 'address', 'date', 'status')
+    ordering = ['date']

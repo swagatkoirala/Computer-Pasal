@@ -11,6 +11,9 @@ class Customer(models.Model):
     def register(self):
         self.save()
 
+    def __str__(self):
+        return self.first_name
+
     @staticmethod
     def get_customer_by_email(email):
         try:

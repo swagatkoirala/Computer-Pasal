@@ -47,16 +47,17 @@
 
 
 
+
     </style>
 
     <!-- carousel -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
         <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators"></li>
+            <li data-slide-to="1" data-target="#carouselExampleIndicators"></li>
+            <li data-slide-to="2" data-target="#carouselExampleIndicators"></li>
+            <li data-slide-to="3" data-target="#carouselExampleIndicators"></li>
+            <li data-slide-to="4" data-target="#carouselExampleIndicators"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
 
@@ -85,12 +86,12 @@
                 </div>
             </div>
 
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleIndicators" role="button">
+                <span aria-hidden="true" class="carousel-control-prev-icon"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <a class="carousel-control-next" data-slide="next" href="#carouselExampleIndicators" role="button">
+                <span aria-hidden="true" class="carousel-control-next-icon"></span>
                 <span class="sr-only">Next</span>
             </a>
         </div>
@@ -211,36 +212,36 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="team-member mx-auto mb-5 mb-lg-0">
-                    <img class="img-fluid rounded-circle" src="{% static 'image/swagat.jpg'%}" alt=""><br/>
+                    <img alt="" class="img-fluid rounded-circle" src="{% static 'image/swagat.jpg'%}"><br/>
                     <h4>Swagat Koirala</h4>
-                    <p class="text-muted">Lead Developer</p>
+                    <p class="text-muted">Developer</p>
                     <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="team-member mx-auto mb-5 mb-lg-0">
-                    <img class="img-fluid rounded-circle" src="{% static 'image/nuraj.jpg'%}" alt=""/>
+                    <img alt="" class="img-fluid rounded-circle" src="{% static 'image/nuraj.jpg'%}"/>
                     <h4>Nuraj Panthi</h4>
-                    <p class="text-muted">Lead Database Handler</p>
+                    <p class="text-muted">Database Handler</p>
                     <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="team-member mx-auto mb-5 mb-lg-0">
-                    <img class="img-fluid rounded-circle" src="{% static 'image/ujjwal.jpg'%}" alt=""/>
+                    <img alt="" class="img-fluid rounded-circle" src="{% static 'image/ujjwal.jpg'%}"/>
                     <h4>Ujjwal Joshi</h4>
-                    <p class="text-muted">Lead Designer</p>
+                    <p class="text-muted">Designer</p>
                     <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="team-member mx-auto mb-5 mb-lg-0">
-                    <img class="img-fluid rounded-circle" src="{% static 'image/krishna.jpg'%}" alt=""/>
+                    <img alt="" class="img-fluid rounded-circle" src="{% static 'image/krishna.jpg'%}"/>
                     <h4>Krishna Paudel</h4>
-                    <p class="text-muted">Lead Marketer</p>
+                    <p class="text-muted">Marketer</p>
                     <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                 </div>

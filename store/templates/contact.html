@@ -17,78 +17,82 @@
         <div class="row">
             <div class="col-12">
                 <div class="google-maps mb-100">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.3548473204924!2d85.29089151438534!3d27.73719913078771
+                    <iframe allowfullscreen="" aria-hidden="false" frameborder="0" height="600"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.3548473204924!2d85.29089151438534!3d27.73719913078771
                     !2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb18b87f229245%3A0xbd827eb377a805d0!2sBoharatar%2C%20Kathmandu%2044600
-                    !5e0!3m2!1sen!2snp!4v1606813519163!5m2!1sen!2snp" width="1090" height="600" frameborder="0" style="border:0;"
-                            allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    !5e0!3m2!1sen!2snp!4v1606813519163!5m2!1sen!2snp"
+                            style="border:0;" tabindex="0" width="1090"></iframe>
                 </div>
             </div>
         </div>
     </div>
 
 
-<br>
-
-<!-- (Contact Section) -->
-
-<div class="container-fluid mt-3 ">
-    <div class="row">
-    <div class="col-lg-3">
-        <div class="row">
-    <!-- information -->
-            <div class="col-12">
-                <div class="contact-information">
-                    <br><br><br>
-                    <h5>Address</h5>
-                    <p>Balaju-16, Balaju Height, Kathmandu</p>
-
-                    <h5>Contact No.</h5>
-                    <p>+9779869051179</p>
-
-                    <h5>Email</h5>
-                    <p class="mb-0">Swagatkoirala5@gmail.com</p>
-                </div>
-            </div>
-        </div>
-    </div>
     <br>
-<!-- Contact Form -->
-    <div class="col-lg-9 ">
-        <div class="col-12 ">
-            <div class="contact-form">
-        <!-- section heading -->
-                <div class="section-heading text-center">
-                    <h2>Get in Touch with us.</h2>
-                    <div class="line"></div>
-                </div>
-                <br>
-        <!-- Form-->
-                <form action="{% url 'contact' %}" method="post">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <input type="text" name="message-name" class="form-control mb-30" placeholder="Your Name">
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="email" name="message-email" class="form-control mb-30" placeholder="Your Email">
-                        </div>
 
-                        <div class="col-12">
-                            <br>
-                            <textarea name="message" class="form-control mb-30" placeholder="Your Message"></textarea>
-                         </div>
-                        <div class="col-12">
-                            <br>
-                            <button type="submit" class="btn btn-info float-right">Send Message</button>
+    <!-- (Contact Section) -->
+
+    <div class="container-fluid mt-3 ">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="row">
+                    <!-- information -->
+                    <div class="col-12">
+                        <div class="contact-information">
+                            <br><br><br>
+                            <h5>Address</h5>
+                            <p>Balaju-16, Balaju Height, Kathmandu</p>
+
+                            <h5>Contact No.</h5>
+                            <p>+9779869051179</p>
+
+                            <h5>Email</h5>
+                            <p class="mb-0">Swagatkoirala5@gmail.com</p>
                         </div>
                     </div>
-                </form>
+                </div>
+            </div>
+            <br>
+            <!-- Contact Form -->
+            <div class="col-lg-9 ">
+                <div class="col-12 ">
+                    <div class="contact-form">
+                        <!-- section heading -->
+                        <div class="section-heading text-center">
+                            <h2>Get in Touch with us.</h2>
+                            <div class="line"></div>
+                        </div>
+                        <br>
+                        <!-- Form-->
+                        <form action="{% url 'contact' %}" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input class="form-control mb-30" name="message-name" placeholder="Your Name"
+                                           type="text">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input class="form-control mb-30" name="message-email" placeholder="Your Email"
+                                           type="email">
+                                </div>
+
+                                <div class="col-12">
+                                    <br>
+                                    <textarea class="form-control mb-30" name="message"
+                                              placeholder="Your Message"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <br>
+                                    <button class="btn btn-info float-right" type="submit">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 </section>
 {% endif %}
 
-        {% endblock %}
+{% endblock %}

@@ -1,92 +1,62 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{% load cart %}
+{% load custom_filter %}
 
 
 <!-- Page Content -->
-<div class="container">
+<div class="container-fluid mt-3 bg-dark">
 
-  <!-- Portfolio Item Heading -->
-  <h1 class="my-4">Page Heading
-    <small>Secondary Text</small>
-  </h1>
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">{{ product.name }}
+        <small></small>
+    </h1>
 
-  <!-- Portfolio Item Row -->
-  <div class="row">
+    <!-- Portfolio Item Row -->
+    <div class="row">
 
-    <div class="col-md-8">
-      <img class="img-fluid" src="/" alt="">
+        <div class="col-md-6 mb-4">
+        <img class="img-fluid" src="{{product.image.url}}" alt="Card image cap">
     </div>
 
-    <div class="col-md-4">
-      <h3 class="my-3">Project Description</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-      <h3 class="my-3">Project Details</h3>
-      <ul>
-        <li>Lorem Ipsum</li>
-        <li>Dolor Sit Amet</li>
-        <li>Consectetur</li>
-        <li>Adipiscing Elit</li>
-      </ul>
-    </div>
+    <div class="float-right col-md-6">
+        <h3 class="my-3"><u>Description:</u></h3>
+        <ul>
+            <p>Price : <b>{{product.price|currency}}</b></p>
+            <p>Brands : <b>{{product.brands}}</b></p>
+            <p>Category : <b> {{object.get_category_display}}</b></p>
 
-  </div>
-  <!-- /.row -->
+        </ul>
 
-  <!-- Related Projects Row -->
-  <h3 class="my-4">Related Projects</h3>
 
-  <div class="row">
+        <div class="card-footer1 p-0 no-gutters">
 
-    <div class="col-md-3 col-sm-6 mb-4">
-      <a href="#">
-            <img class="img-fluid" src="/" alt="">
-          </a>
-    </div>
+            {% if product|is_in_cart:request.session.cart %}
 
-    <div class="col-md-3 col-sm-6 mb-4">
-      <a href="#">
-            <img class="img-fluid" src="/" alt="">
-          </a>
-    </div>
+            <div class="text-center col"><p>{{product|cart_quantity:request.session.cart}} in Cart </p>
+            </div>
 
-    <div class="col-md-3 col-sm-6 mb-4">
-      <a href="#">
-            <img class="img-fluid" src="/" alt="">
-          </a>
-    </div>
 
-    <div class="col-md-3 col-sm-6 mb-4">
-      <a href="#">
-            <img class="img-fluid" src="/" alt="">
-          </a>
-    </div>
+            {% else %}
 
-  </div>
-  <!-- /.row -->
-
-  <!-- /.card -->
-
-        <div class="card card-outline-secondary my-4 bg-dark">
-          <div class="card-header">
-           <h5>Product Reviews</h5>
-          </div>
-          <div class="card-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            <hr>
-            <a href="#" class="btn btn-info">Leave a Review</a>
-          </div>
+            <form action="/#{{product.id}}" class="btn-block" method="POST">
+                {% csrf_token %}
+                <input hidden name='product' type="text" value='{{product.id}}'>
+                <input class="float-right btn btn-info  form-control" type="submit"
+                       value="Add To Cart">
+            </form>
+            {% endif %}
+            <h2 class="my-3"><u><b>Product Details</b></u></h2>
+            <p>{{ product.description }}</p>
         </div>
-        <!-- /.card -->
+
+    </div>
+
+
+</div>
 
 </div>
 <!-- /.container -->
+
 
 {% endblock %}

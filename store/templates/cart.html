@@ -27,7 +27,7 @@
                 <td><img alt="" class="rounded-circle" src="{{product.image.url}}" style="height: 50px;"></td>
                 <td>{{product.name}}</td>
                 <td>{{product.price|currency}}</td>
-                <td >{{product|cart_quantity:request.session.cart}}</td>
+                <td>{{product|cart_quantity:request.session.cart}}</td>
                 <td>{{product|price_total:request.session.cart|currency}}</td>
                 <td>
                     <form action="/#{{product.id}}" class="col-2 " method="post">
@@ -42,7 +42,7 @@
                         <input class="btn btn-danger" type="submit" value="Remove">
                     </form>
 
-                    </td>
+                </td>
             </tr>
 
 
@@ -60,7 +60,8 @@
         </table>
         <hr>
         <div class="m-3 p-3">
-            <a class="btn btn-outline-info border rounded  col-lg-3 float-right" data-target="#exampleModal" data-toggle="modal"
+            <a class="btn btn-outline-info border rounded  col-lg-3 float-right" data-target="#exampleModal"
+               data-toggle="modal"
                href="#">Check out</a>
         </div>
     </div>
@@ -102,4 +103,4 @@
                     </form>
                 </div>
             </div>
-{% endblock %}
+            {% endblock %}

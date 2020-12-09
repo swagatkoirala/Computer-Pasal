@@ -11,7 +11,7 @@ class CheckOut(View):
         address = request.POST.get('address')
         phone = request.POST.get('phone')
         customer = request.session.get('customer')
-        cart = request.session.get('cart')
+        cart = request.session
         products = Product.get_products_by_id(list(cart.keys()))
         print(address, phone, customer, cart, products)
 

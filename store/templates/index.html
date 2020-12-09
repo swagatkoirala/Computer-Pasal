@@ -2,6 +2,7 @@
 {% block content %}
 
 {% load cart %}
+
 {% load custom_filter %}
 
 <!-- body -->
@@ -28,15 +29,18 @@
             <div class="row mx-auto">
                 {% for product in products %}
                 <div class="card mx-auto mb-3 bg-dark" id={{product.id}} style="width: 18rem;">
-                    <a href="/product-details"><img alt="Card image cap" class="card-img-top img-fluid"
-                                                    src="{{product.image.url}}"></a>
+                    <div class="embed-responsive embed-responsive-1by1">
+                        <a href="{{ product.get_absolute_url }}" name="details"><img alt="Card image cap"
+                                                                       class="card-img-top embed-responsive-item img-fluid"
+                                                                       src="{{product.image.url}}"></a>
+                    </div>
                     <div class="card-body">
-                        <a class="card-title" href="/product-details">{{product.name}}</a>
+                        <a class="card-title" href="{{ product.get_absolute_url }}" name="details">{{product.name}}</a>
                         <p class="card-text"><b>{{product.price|currency}}</b></p>
 
                     </div>
 
-                    <div class="card-footer p-0 no-gutters">
+                    <div class="card-footer1 p-0 no-gutters">
 
                         {% if product|is_in_cart:request.session.cart %}
 
@@ -53,6 +57,19 @@
                                    value="Add To Cart">
                         </form>
                         {% endif %}
+
+
+                    </div>
+                    <div class="card-footer2 p-0 no-gutters">
+
+
+                        <form action="/#{{product.id}}" class="btn-block" method="POST">
+                            {% csrf_token %}
+                            <input hidden name='product' type="text" value='{{product.id}}'>
+                            <input class="float-right btn btn-success  form-control" type="submit"
+                                   value="Add To Wishlist">
+                        </form>
+
 
                     </div>
 

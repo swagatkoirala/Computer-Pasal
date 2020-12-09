@@ -1,6 +1,7 @@
 from django.contrib.auth.hashers import make_password
 from django.shortcuts import render, redirect
 from django.views import View
+
 from store.models.customer import Customer
 
 
@@ -15,7 +16,6 @@ class Signup(View):
         phone = request.POST['phone']
         email = request.POST['email']
         password = request.POST['password']
-
 
         # validation
         value = {
@@ -47,8 +47,6 @@ class Signup(View):
             }
             return render(request, 'signup.html', data)
 
-
-
     def validateCustomer(self, customer):
         error_message = None;
         if (not customer.first_name):
@@ -72,4 +70,3 @@ class Signup(View):
         # saving
 
         return error_message
-
