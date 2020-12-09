@@ -4,7 +4,7 @@ from django.views import View
 # Create your views here.
 from django.views.generic import DetailView
 
-from store.models import Product
+from store.models import Product, Category
 
 
 class Details(DetailView):

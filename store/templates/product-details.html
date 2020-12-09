@@ -5,58 +5,92 @@
 
 
 <!-- Page Content -->
-<div class="container-fluid mt-3 bg-dark">
+<!-- Page Content -->
 
-    <!-- Portfolio Item Heading -->
-    <h1 class="my-4">{{ product.name }}
-        <small></small>
-    </h1>
 
-    <!-- Portfolio Item Row -->
+<div class="container-fluid bg-dark"> <!-- Portfolio Item Row -->
+    <hr/>
     <div class="row">
+        <div class="col-md-4" id={{product.id}}>
+            <img class="img-fluid" src="{{product.image.url}}" alt="">
+        </div>
 
-        <div class="col-md-6 mb-4">
-        <img class="img-fluid" src="{{product.image.url}}" alt="Card image cap">
-    </div>
+        <div class="col-md-8">
+            <h3 class="my-3">{{product.name}}</h3>
+            <ul>
+                <p>Price : {{product.price|currency}}</p>
+                <p>Brand : {{product.brands}}</p>
+                <p>Category : </p>
+            </ul>
+            <hr/>
+            <h3>More Details: </h3>
+            <p class="my-3">{{product.description}}</p>
 
-    <div class="float-right col-md-6">
-        <h3 class="my-3"><u>Description:</u></h3>
-        <ul>
-            <p>Price : <b>{{product.price|currency}}</b></p>
-            <p>Brands : <b>{{product.brands}}</b></p>
-            <p>Category : <b> {{object.get_category_display}}</b></p>
-
-        </ul>
-
-
-        <div class="card-footer1 p-0 no-gutters">
-
-            {% if product|is_in_cart:request.session.cart %}
-
-            <div class="text-center col"><p>{{product|cart_quantity:request.session.cart}} in Cart </p>
-            </div>
-
-
-            {% else %}
-
-            <form action="/#{{product.id}}" class="btn-block" method="POST">
-                {% csrf_token %}
-                <input hidden name='product' type="text" value='{{product.id}}'>
-                <input class="float-right btn btn-info  form-control" type="submit"
-                       value="Add To Cart">
-            </form>
-            {% endif %}
-            <h2 class="my-3"><u><b>Product Details</b></u></h2>
-            <p>{{ product.description }}</p>
         </div>
 
     </div>
 
+    <!-- /.row -->
 
-</div>
+    <!-- Related Product Row -->
+    <h3 class="my-4">Related Product</h3>
+
+    <div class="row">
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="/" alt="">
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="/" alt="">
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="/" alt="">
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="/" alt="">
+            </a>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+    <!-- /.card -->
+
+    <div class="card card-outline-secondary my-4 bg-dark">
+        <div class="card-header">
+            <h5>Product Reviews</h5>
+        </div>
+        <div class="card-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique
+                necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia,
+                necessitatibus quae sint natus.</p>
+            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+            <hr>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique
+                necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia,
+                necessitatibus quae sint natus.</p>
+            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+            <hr>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique
+                necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia,
+                necessitatibus quae sint natus.</p>
+            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+            <hr>
+            <a href="#" class="btn btn-info">Leave a Review</a>
+        </div>
+    </div>
+    <!-- /.card -->
 
 </div>
 <!-- /.container -->
-
-
 {% endblock %}

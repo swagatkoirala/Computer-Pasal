@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from .models import Product, Category, Customer, Order
 
-admin.site.site_header = "Swagat Site"
+admin.site.site_header = "Computer Pasal"
 
 
 @admin.register(Product)
