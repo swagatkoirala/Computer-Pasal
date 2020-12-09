@@ -62,15 +62,10 @@
           cursor: pointer;
           font-size: 17px;
         }
-
-        /*Resize the wrap to see the search bar change!*/
-        .wrap{
-          width: 25%;
-          position: absolute;
-          top: 75%;
-          left: 50%;
-          transform: translate(-5%, -95%);
+        .khoj {
+            width: 25rem;
         }
+
 
 
 
@@ -112,15 +107,15 @@
                 </li>
             </ul>
 
-            <div class="wrap">
+            <ul class="khoj form-inline my-2 my-lg-0">
                 <form action="/search" class="search" method="get">
-                    <input class="searchTerm" id="search" name="search" placeholder="What are you looking for?" type="text"
+                    <input class="searchTerm" id="search" name="search" placeholder="What are you looking for?"
                            type="text">
                     <button class="searchButton" type="submit">
                         <i class="fa fa-search"></i>
                     </button>
                 </form>
-            </div>
+            </ul>
 
 
             <ul class="navbar-nav">
@@ -153,6 +148,8 @@
                 {% endif %}
 
 
+
+
                 <li class="nav-item">
                     <a class="nav-link" href="/cart"><i aria-hidden="true" class="fa fa-shopping-cart fa-lg"></i>
                         <span class="badge badge-info">{{request.session.cart.keys|length}}</span>
@@ -166,6 +163,7 @@
                 </li>
 
             </ul>
+
         </div>
     </nav>
 </header>
