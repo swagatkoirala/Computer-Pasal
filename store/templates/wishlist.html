@@ -26,6 +26,10 @@
                 <td>{{product.price|currency}}</td>
             </tr>
 
+            {% empty %}
+            <h3>No Wish Items Exist</h3>
+            <hr/>
+
             {% endfor %}
 
             </tbody>

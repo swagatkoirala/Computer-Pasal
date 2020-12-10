@@ -26,3 +26,8 @@ class CustCustomer(admin.ModelAdmin):
 class CustOrder(admin.ModelAdmin):
     list_display = ('product', 'customer', 'quantity', 'address', 'date', 'status')
     ordering = ['date']
+
+# @admin.register(Wishlist)
+# class CustWishlist(admin.ModelAdmin):
+#     list_display = ('customer', 'wished_product', 'added_date')
+#     ordering = ['added_date']

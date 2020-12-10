@@ -23,7 +23,7 @@
                 <form action="/#{{product.id}}" class="btn-block" method="POST">
                     {% csrf_token %}
                     <input hidden name='product' type="text" value='{{product.id}}'>
-                    <button class="btn btn-info" type="submit">Add To Cart
+                    <button class="btn btn-danger" type="submit">Add To Cart
                         <i class="fa fa-shopping-cart"></i>
                     </button>
                 </form>
