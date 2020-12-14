@@ -121,13 +121,13 @@
             <ul class="navbar-nav">
                 {% if request.session.customer %}
 
+
                 <li class="nav-item dropdown ">
 
                     <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
                        href="/account" id="navbarDropdown" id="{{customer.id}}" role="button"><i aria-hidden="true"
                                                                                                     class="fa fa-user"></i>
-                        {{request.user.first_name}}</a>
-
+                        Account</a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu bg-dark">
                         <a class="dropdown-item" href="/orders"><h6>My Orders</h6></a>
                         <a class="dropdown-item" href="/logout"><h6>Logout</h6></a>

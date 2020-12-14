@@ -86,17 +86,17 @@
             </div>
             <div class="modal-body">
                 <div class="m-2 p-3">
-                    <form action="/check-out" method="POST">
+                    <form action="/checkout" method="POST">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for=""><p>Shipping Address</p></label>
-                            <input aria-describedby="helpId" class="form-control" id="" name="address" placeholder=""
+                            <input aria-describedby="helpId" class="form-control" name="address" placeholder=""
                                    type="text">
 
                         </div>
                         <div class="form-group">
                             <label for=""><p>Contact No.</p></label>
-                            <input aria-describedby="helpId" class="form-control" id="" name="phone" placeholder=""
+                            <input aria-describedby="helpId" class="form-control" name="phone" placeholder=""
                                    type="text">
                         </div>
 

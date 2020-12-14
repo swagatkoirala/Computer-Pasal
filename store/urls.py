@@ -13,7 +13,6 @@ from .views.orders import OrderView
 from .views.search import Search
 from .views.signup import Signup
 from .views.start import Start
-from .views.wishlist import Wishlist
 
 urlpatterns = [
     path('', Index.as_view(), name='homepage'),
@@ -27,8 +26,7 @@ urlpatterns = [
     path('customer', Customer.as_view(), name='customer'),
     path('logout', logout, name='logout'),
     path('cart', auth_middleware(Cart.as_view()), name='cart'),
-    path('wishlist', Wishlist.as_view(), name='wishlist'),
-    path('check-out', CheckOut.as_view(), name='checkout'),
+    path('checkout', CheckOut.as_view(), name='checkout'),
     path('orders', auth_middleware(OrderView.as_view()), name='orders'),
     path('product-details/<slug>/', Details.as_view(), name='product-details'),
 
