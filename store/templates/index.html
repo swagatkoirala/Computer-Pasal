@@ -35,6 +35,7 @@
                                                                                      class="card-img-top embed-responsive-item img-fluid"
                                                                                      src="{{product.image.url}}"></a>
                     </div>
+
                     <div class="card-body">
                         <a class="card-title" href="{{ product.get_absolute_url }}" name="details">{{product.name}}</a>
                         <p class="card-text"><b>{{product.price|currency}}</b></p>
@@ -61,12 +62,6 @@
 
 
                     </div>
-                    <form action="/wishlist" class="btn-block" method="get">
-                        {% csrf_token %}
-                        <input hidden name='product' type="text" value='{{product.id}}'>
-                        <input class="float-right btn btn-success  form-control" type="submit"
-                               value="Add To Wishlist">
-                    </form>
 
                 </div>
                 {% endfor %}

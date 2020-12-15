@@ -20,12 +20,16 @@
     <title>Computer Pasal (Computer accesories Store)</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
 
         body{
             background-image: url("{% static 'image/bg.jpg' %}");
             background-position: center;
             background-size: cover;
         }
+
         th,td,p,h1,h2,h3,h4,h5,h6{
             color: #ff9900;
         }
@@ -60,11 +64,27 @@
           color:#ff9900 ;
           border-radius: 0 5px 5px 0;
           cursor: pointer;
-          font-size: 17px;
+          font-size: 14px;
         }
         .khoj {
             width: 25rem;
         }
+
+
+        .fa {
+              font-size: 17px;
+        }
+
+        .checked {
+              color: #ff9900;
+        }
+
+
+
+
+
+
+
 
 
 
@@ -77,96 +97,89 @@
 
 </head>
 
-<body>
+<body class="cyan-skin">
 
 <!-- navbar -->
-<header>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-logo" href="/start"><img src="{% static 'image/logo.png'%}"></a>
-        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
-                data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto ">
-                <li class="nav-item">
-                    <a class="nav-link" href="/start">Home<span class="sr-only">(current)</span></a>
-                </li>
+<nav class="navbar navbar-expand-lg fixed-top scrolling-navbar navbar-dark" style="background-color:#333333">
+    <a class="navbar-logo" href="/start"><img src="{% static 'image/logo.png'%}"></a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/store">Store<span class="sr-only">(current)</span></a>
-                </li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ">
+            <li class="nav-item">
+                <a class="nav-link" href="/start">Home<span class="sr-only">(current)</span></a>
+            </li>
 
-                <li class="nav-item ">
-                    <a class="nav-link" href="/about">About Us<span class="sr-only">(current)</span></a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/store">Store<span class="sr-only">(current)</span></a>
+            </li>
 
-                <li class="nav-item ">
-                    <a class="nav-link" href="/contact">Contact Us<span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
+            <li class="nav-item ">
+                <a class="nav-link" href="/about">About Us<span class="sr-only">(current)</span></a>
+            </li>
 
-            <ul class="khoj form-inline my-2 my-lg-0">
-                <form action="/search" class="search" method="get">
-                    <input class="searchTerm" id="search" name="search" placeholder="What are you looking for?"
-                           type="text">
-                    <button class="searchButton" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </form>
-            </ul>
+            <li class="nav-item ">
+                <a class="nav-link" href="/contact">Contact Us<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
 
-
-            <ul class="navbar-nav">
-                {% if request.session.customer %}
+        <ul class="khoj form-inline my-2 my-lg-0">
+            <form action="/search" class="search" method="get">
+                <input class="searchTerm" id="search" name="search" placeholder="What are you looking for?"
+                       type="text">
+                <button class="searchButton" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+        </ul>
 
 
-                <li class="nav-item dropdown ">
-
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                       href="/account" id="navbarDropdown" id="{{customer.id}}" role="button"><i aria-hidden="true"
-                                                                                                    class="fa fa-user"></i>
-                        Account</a>
-                    <div aria-labelledby="navbarDropdown" class="dropdown-menu bg-dark">
-                        <a class="dropdown-item" href="/orders"><h6>My Orders</h6></a>
-                        <a class="dropdown-item" href="/logout"><h6>Logout</h6></a>
-                    </div>
-                </li>
+        <ul class="navbar-nav">
+            {% if request.session.customer %}
 
 
-                {% else %}
+            <li class="nav-item dropdown ">
 
-                <li class="nav-item ">
-                    <a class="nav-link" href="/signup">Signup
-                        <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="/login">Login
-                        <span class="sr-only">(current)</span></a>
-                </li>
-                {% endif %}
+                <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                   data-toggle="dropdown"
+                   href="/account" id="navbarDropdown" id="{{customer.id}}" role="button"><i aria-hidden="true"
+                                                                                             class="fa fa-user"></i>
+                    Account</a>
+                <div aria-labelledby="navbarDropdown" class="dropdown-menu bg-dark">
+                    <a class="dropdown-item" href="/orders"><h6>My Orders</h6></a>
+                    <a class="dropdown-item" href="/logout"><h6>Logout</h6></a>
+                </div>
+            </li>
 
 
+            {% else %}
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/signup">Signup
+                    <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/login">Login
+                    <span class="sr-only">(current)</span></a>
+            </li>
+            {% endif %}
 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/cart"><i aria-hidden="true" class="fa fa-shopping-cart fa-lg"></i>
-                        <span class="badge badge-info">{{request.session.cart.keys|length}}</span>
-                        <span class="sr-only">(current)</span></a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cart"><i aria-hidden="true" class="fa fa-shopping-cart fa-lg"></i>
+                    <span class="badge badge-info">{{request.session.cart.keys|length}}</span>
+                    <span class="sr-only">(current)</span></a>
+            </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/wishlist"><i aria-hidden="true" class="fa fa-heart fa-lg"></i>
-                        <span class="badge badge-info">0</span>
-                        <span class="sr-only">(current)</span></a>
-                </li>
+        </ul>
 
-            </ul>
-
-        </div>
-    </nav>
-</header>
+    </div>
+</nav>
 
 {% block content %}
 
@@ -174,27 +187,77 @@
 {% endblock %}
 
 <hr/>
-<!-- Footer-->
-<footer class="footer py-4 mx-auto bg-dark">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-5 text-lg-left text-warning">Copyright © Computer Pasal 2020</div>
-            <div class="col-lg-3 my-3 my-lg-0">
-                <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+<!-- Footer -->
+<footer class="page-footer font-small pt-4 bg-dark">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+
+        <!-- Footer links -->
+        <div class="row text-center text-md-left mt-3 pb-3">
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h4 class="text-uppercase mb-4 font-italic" style="font-family:Cursive">Computer Pasal</h4>
+                <p style="color:#a6a6a6">We, the Computer Pasal, are the bunch of geeks with a passion to get things
+                    done correctly. Computer
+                    Pasal has a mission to ensure better web experience by providing digital products at affordable cost
+                    which customer can't refuse.</p>
             </div>
-            <div class="col-lg-4 text-lg-right">
-                <a class="mr-3" href="#!">Privacy Policy</a>
-                <a href="#!">Terms of Use</a>
+            <!-- Grid column -->
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+                <p>
+                    <a href="/start" style="color:#a6a6a6">Home</a>
+                </p>
+                <p>
+                    <a href="/store" style="color:#a6a6a6">Store</a>
+                </p>
+                <p>
+                    <a href="/about" style="color:#a6a6a6">About Us</a>
+                </p>
+                <p>
+                    <a href="/contact" style="color:#a6a6a6">Contact Us</a>
+                </p>
             </div>
+
+            <!-- Grid column -->
+            <hr class="w-100 clearfix d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                <p>
+                    <i class="fas fa-home mr-3"></i>Balaju-16, Kathmandu</p>
+                <p>
+                    <i class="fas fa-envelope mr-3"></i> pcsort525@gmail.com</p>
+                <p>
+                    <i class="fas fa-phone mr-3"></i> + 977 9869051179</p>
+            </div>
+            <!-- Grid column -->
+
         </div>
+        <!-- Footer links -->
+
     </div>
+
+    <div class="footer-copyright text-center" style="background-color:#333333">
+        <br/><br/>
+        <p>© 2020 Copyright:<a href="/"> www.computerpasal.com</a></p>
+        <br>
+    </div>
+
+
 </footer>
+
+<!-- Footer -->
 
 
 <!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script crossorigin="anonymous"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
