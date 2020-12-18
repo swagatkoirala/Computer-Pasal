@@ -20,11 +20,17 @@
                 <p style="color:#a6a6a6">Price : <b>{{product.price|currency}}</b></p>
                 <p style="color:#a6a6a6">Brand : {{product.brands}}</p>
 
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star"></span>
+                <div class="col ">
+                    <form class="rate-form" action="" method="post" id="{{product.id}}" >
+                        {% csrf_token %}
+                        <button type="submit" class="fa fa-star my-btn " id="first"></button>
+                        <button type="submit" class="fa fa-star my-btn " id="second"></button>
+                        <button type="submit" class="fa fa-star my-btn " id="third"></button>
+                        <button type="submit" class="fa fa-star my-btn " id="fourth"></button>
+                        <button type="submit" class="fa fa-star my-btn " id="fifth"></button>
+                    </form>
+                </div>
+
                 <br/>
                 <br/>
                 <form action="/#{{product.id}}" class="btn-block" method="POST">

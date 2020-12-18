@@ -7,6 +7,7 @@ from .views.checkout import CheckOut
 from .views.contact import Contact
 from .views.customer import Customer
 from .views.details import Details
+from .views.rating import Rating
 from .views.home import Index, store
 from .views.login import Login, logout
 from .views.orders import OrderView
@@ -29,5 +30,6 @@ urlpatterns = [
     path('checkout', CheckOut.as_view(), name='checkout'),
     path('orders', auth_middleware(OrderView.as_view()), name='orders'),
     path('product-details/<slug>/', Details.as_view(), name='product-details'),
+    path('rating', Rating.as_view(), name='rating'),
 
 ]

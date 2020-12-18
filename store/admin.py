@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Product, Category, Customer, Order
+from .models import Product, Category, Customer, Order, Rating
 
 admin.site.site_header = "Computer Pasal"
 
@@ -27,7 +27,6 @@ class CustOrder(admin.ModelAdmin):
     list_display = ('product', 'customer', 'quantity', 'address', 'date', 'status')
     ordering = ['date']
 
-# @admin.register(Wishlist)
-# class CustWishlist(admin.ModelAdmin):
-#     list_display = ('customer', 'wished_product', 'added_date')
-#     ordering = ['added_date']
+@admin.register(Rating)
+class CustRating(admin.ModelAdmin):
+    pass
