@@ -6,8 +6,15 @@ register = template.Library()
 
 @register.filter(name='currency')
 def currency(numbers):
-    numbers = round(float(numbers), 2)
-    return "Rs. %s%s" % (intcomma(int(numbers)), ("%0.2f" % numbers)[-3:])
+    if numbers == '' :
+        numbers = round(float(0),2)
+    else:
+        numbers = round(float(numbers), 2)
+    
+    
+    numbers="Rs. %s%s" % (intcomma(int(numbers)), ("%0.2f" % numbers)[-3:])
+    # import pdb; pdb.set_trace()
+    return numbers
 
 
 @register.filter(name='multiply')

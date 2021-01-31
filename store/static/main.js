@@ -1,5 +1,5 @@
 console.log('hello world')
-// get all stars
+// get all stars`
 
 const one = document.getElementById('first')
 const two = document.getElementById('second')
@@ -8,7 +8,6 @@ const four = document.getElementById('fourth')
 const five = document.getElementById('fifth')
 
 const form = document.querySelector('.rate-form')
-const confirmBox = document.getElementById('confirm-box')
 
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 
@@ -79,48 +78,49 @@ const getNumericValue = (stringValue) => {
 
 
 if (one){
-const arr = [one, two, third, four, five]
 
-arr.forEach(item=> item.addEventListener('mouseover', (event)=>{
-    handleSelect(event.target.id)
-}))
+    const arr = [one, two, third, four, five]
 
-arr.forEach(item=> item.addEventListener('click', (event)=>{
-    const val = event.target.id
-    console.log(val)
+    arr.forEach(item=> item.addEventListener('mouseover', (event)=>{
+        handleSelect(event.target.id)
+        // console.log(event.target.id)
+    }))
+
+    arr.forEach(item=> item.addEventListener('click', (event)=>{
+        const val = event.target.id
+        
 
 
-    let isSubmit = false
-    form.addEventListener('submit', e=>{
-        e.preventDefault()
-        if (isSubmit){
-            return
-        }
-        isSubmit = true
-        const id = e.target.id
-        console.log(id)
-        const val_num = getNumericValue(val)
-
-        $.ajax({
-            type: 'post',
-            url: '/rating',
-            data: {
-                'csrfmiddlewaretoken': csrf[0].value,
-                'el_id': id,
-                'val': val_num,
-            },
-            success: function (response) {
-                console.log(response)
-                confirmBox.innerHTML = `<h1>Successfully rated.!!</h1>`
-
-            },
-            error: function (error) {
-                console.log(error)
-                confirmBox.innerHTML = '<h1>OOps!!</h1>'
+        let isSubmit = false
+        form.addEventListener('submit', e=>{
+            e.preventDefault()
+            if (isSubmit){
+                return
             }
+            isSubmit = true
+            const id = e.target.id
+            
+            // console.log(id)
+            // console.log(val_num)
+            const val_num = getNumericValue(val)
+            console.log(val_num)
+            console.log(id)
+            
+
+
+            $.ajax({
+                type: 'post',
+                // url: '/rating',
+                url: 'my-slug-'+id,
+                data: {
+                    'csrfmiddlewaretoken': csrf[0].value,
+                    'el_id': id,
+                    'val': val_num,
+                }
+            })
+
 
         })
-    })
-}))
+    }))
 
 }

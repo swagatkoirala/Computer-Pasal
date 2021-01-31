@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% block content %}
@@ -87,6 +88,12 @@
             <div class="modal-body">
                 <div class="m-2 p-3">
                     <form action="/checkout" method="POST">
+                        
+                        <!-- {% csrf_token %}
+                        {{form.as_p}}
+                        <button class="btn btn-info">Place order</button> -->
+                       
+            
                         {% csrf_token %}
                         <div class="form-group">
                             <label for=""><p>Shipping Address</p></label>
@@ -99,6 +106,7 @@
                             <input aria-describedby="helpId" class="form-control" name="phone" placeholder=""
                                    type="text">
                         </div>
+                        
 
                         <input class="btn float-right btn-outline-info col-lg-6" type="submit" value="Check out">
                     </form>

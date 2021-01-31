@@ -20,18 +20,16 @@
                 <p style="color:#a6a6a6">Price : <b>{{product.price|currency}}</b></p>
                 <p style="color:#a6a6a6">Brand : {{product.brands}}</p>
 
-                <div class="col ">
-                    <form class="rate-form" action="" method="post" id="{{product.id}}" >
-                        {% csrf_token %}
-                        <button type="submit" class="fa fa-star my-btn " id="first"></button>
-                        <button type="submit" class="fa fa-star my-btn " id="second"></button>
-                        <button type="submit" class="fa fa-star my-btn " id="third"></button>
-                        <button type="submit" class="fa fa-star my-btn " id="fourth"></button>
-                        <button type="submit" class="fa fa-star my-btn " id="fifth"></button>
-                    </form>
-                </div>
-
+                <form class="rate-form" action='/product-details/my-slug-{{product.id}}' method="post" id="{{product.id}}"  >
+                    {% csrf_token %}
+                    <button type="submit" class="fa fa-star my-btn " id="first" ></button>
+                    <button type="submit" class="fa fa-star my-btn " id="second"></button>
+                    <button type="submit" class="fa fa-star my-btn " id="third"></button>
+                    <button type="submit" class="fa fa-star my-btn " id="fourth"></button>
+                    <button type="submit" class="fa fa-star my-btn " id="fifth"></button>
+                </form>
                 <br/>
+                <p>You rated this product <b>{{score}}</b> stars</p>
                 <br/>
                 <form action="/#{{product.id}}" class="btn-block" method="POST">
                     {% csrf_token %}
@@ -57,38 +55,55 @@
     <!-- Related Product Row -->
     <h3 class="my-4">Related Product</h3>
 
-    <div class="row">
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="/" alt="">
-            </a>
+    <div class="row mx auto">
+        <div style="margin:auto;width:18rem;">
+            <div class="embed-responsive embed-responsive-1by1">
+                <a href="{{ product_recommend_one.get_absolute_url }}" name="details"><img alt="Card image cap"
+                                                                             class="card-img-top embed-responsive-item img-fluid"
+                                                                             src="{{product_recommend_one.image.url}}"></a>
+            </div style="margin:auto;width:18rem;">
+            <div class="card-body">
+            <a class="card-title" href="{{ product_recommend_one.get_absolute_url }}" name="details">{{product_recommend_one.name}}</a>
+            </div>
         </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="/" alt="">
-            </a>
+        <div style="margin:auto;width:18rem;">
+            <div class="embed-responsive embed-responsive-1by1">
+                <a href="{{ product_recommend_two.get_absolute_url }}" name="details"><img alt="Card image cap"
+                                                                             class="card-img-top embed-responsive-item img-fluid"
+                                                                             src="{{product_recommend_two.image.url}}"></a>
+            </div>
+            <div class="card-body">
+            <a class="card-title" href="{{ product_recommend_two.get_absolute_url }}" name="details">{{product_recommend_two.name}}</a>
+            </div>
         </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="/" alt="">
-            </a>
+        <div style="margin:auto;width:18rem;">
+            <div class="embed-responsive embed-responsive-1by1">
+                <a href="{{ product_recommend_three.get_absolute_url }}" name="details"><img alt="Card image cap"
+                                                                             class="card-img-top embed-responsive-item img-fluid"
+                                                                             src="{{product_recommend_three.image.url}}"></a>
+            </div>
+            <div class="card-body">
+            <a class="card-title" href="{{ product_recommend_three.get_absolute_url }}" name="details">{{product_recommend_three.name}}</a>
+            </div>
         </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="/" alt="">
-            </a>
+        <div>
+            <div class="embed-responsive embed-responsive-1by1">
+                <a href="{{ product_recommend_four.get_absolute_url }}" name="details"><img alt="Card image cap"
+                                                                             class="card-img-top embed-responsive-item img-fluid"
+                                                                             src="{{product_recommend_four.image.url}}"></a>
+            </div>
+            <div class="card-body">
+            <a class="card-title" href="{{ product_recommend_four.get_absolute_url }}" name="details">{{product_recommend_four.name}}</a>
+            </div>
         </div>
+        
 
     </div>
     <!-- /.row -->
 
     <!-- /.card -->
 
-    <div class="card card-outline-secondary my-4 bg-dark">
+    <!-- <div class="card card-outline-secondary my-4 bg-dark">
         <div class="card-header">
             <h5>Product Reviews</h5>
         </div>
@@ -110,7 +125,7 @@
             <hr>
             <a href="#" class="btn btn-info">Leave a Review</a>
         </div>
-    </div>
+    </div> -->
     <!-- /.card -->
 
 </div>

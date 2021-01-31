@@ -9,7 +9,7 @@ class Product(models.Model):
     price = models.IntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=0)
     brands = models.CharField(max_length=100, default='')
-    slug = models.SlugField()
+    slug = models.SlugField(blank=True,unique=True)
     description = models.TextField()
 
     image = models.ImageField(upload_to='uploads/products/')
@@ -27,6 +27,7 @@ class Product(models.Model):
     @staticmethod
     def get_all_products():
         return Product.objects.all()
+    
 
     @staticmethod
     def get_all_products_by_categoryid(category_id):

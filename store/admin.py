@@ -8,7 +8,7 @@ admin.site.site_header = "Computer Pasal"
 @admin.register(Product)
 class CustProduct(admin.ModelAdmin):
     list_display = ('name', 'category', 'brands')
-    ordering = ['name']
+    # ordering = ['-']
 
 
 @admin.register(Category)
