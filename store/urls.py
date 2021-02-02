@@ -3,17 +3,18 @@ from django.urls import path
 from .middlewares.auth import auth_middleware
 from .views.about import About
 from .views.cart import Cart
-from .views.checkout import CheckOut
+from .views.checkout import CheckOut ,EsewaRequestView,EsewaVerifyView
 from .views.contact import Contact
 from .views.customer import Customer
 from .views.details import Details
-from .views.rating import Rating
+# from .views.rating import RatingView
 from .views.home import Index, store
 from .views.login import Login, logout
 from .views.orders import OrderView
 from .views.search import Search
 from .views.signup import Signup
 from .views.start import Start
+
 
 urlpatterns = [
     path('', Index.as_view(), name='homepage'),
@@ -29,7 +30,10 @@ urlpatterns = [
     path('cart', auth_middleware(Cart.as_view()), name='cart'),
     path('checkout', CheckOut.as_view(), name='checkout'),
     path('orders', auth_middleware(OrderView.as_view()), name='orders'),
-    path('product-details/<slug>/', Details.as_view(), name='product-details'),
-    path('rating', Rating.as_view(), name='rating'),
+    path('product-details/<slug>', Details.as_view(), name='product-details'),
+    # path('rating', RatingView.as_view(), name='rating'),
+    path("esewa-request", EsewaRequestView.as_view(), name="esewa-request"),
+    path("esewa-verify", EsewaVerifyView.as_view(), name="esewa-verify"),
+
 
 ]

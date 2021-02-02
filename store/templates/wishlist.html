@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<div class="container text-center">
+    <div class="border rounded p-4 m-4 bg-dark">
+        <p class="display-4 pl-4 ml-4">Your wishlist</p>
+        <hr>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for product in products %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><img alt="" class="rounded-circle" src="{{product.image.url}}" style="height: 50px;"></td>
+                <td>{{product.name}}</td>
+                <td>{{product.price|currency}}</td>
+            </tr>
+
+            {% empty %}
+            <h3>No Wish Items Exist</h3>
+            <hr/>
+
+            {% endfor %}
+
+            </tbody>
+
+
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}
