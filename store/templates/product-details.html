@@ -29,7 +29,11 @@
                     <button type="submit" class="fa fa-star my-btn " id="fifth"></button>
                 </form>
                 <br/>
+                {% if request.session.customer %}
+                
                 <p>You rated this product <b>{{score}}</b> stars</p>
+                
+                {% endif %}
                 <br/>
                 <form action="/#{{product.id}}" class="btn-block" method="POST">
                     {% csrf_token %}
@@ -56,7 +60,7 @@
     <h3 class="my-4">Related Product</h3>
 
     <div class="row mx auto">
-        <div style="margin:auto;width:18rem;">
+        <div class="card mx-auto mb-3 bg-dark" style="width:18rem;">
             <div class="embed-responsive embed-responsive-1by1">
                 <a href="{{ product_recommend_one.get_absolute_url }}" name="details"><img alt="Card image cap"
                                                                              class="card-img-top embed-responsive-item img-fluid"
@@ -66,7 +70,7 @@
             <a class="card-title" href="{{ product_recommend_one.get_absolute_url }}" name="details">{{product_recommend_one.name}}</a>
             </div>
         </div>
-        <div style="margin:auto;width:18rem;">
+        <div class="card mx-auto mb-3 bg-dark" style="width:18rem;">
             <div class="embed-responsive embed-responsive-1by1">
                 <a href="{{ product_recommend_two.get_absolute_url }}" name="details"><img alt="Card image cap"
                                                                              class="card-img-top embed-responsive-item img-fluid"
@@ -76,7 +80,7 @@
             <a class="card-title" href="{{ product_recommend_two.get_absolute_url }}" name="details">{{product_recommend_two.name}}</a>
             </div>
         </div>
-        <div style="margin:auto;width:18rem;">
+        <div class="card mx-auto mb-3 bg-dark" style="width:18rem;">
             <div class="embed-responsive embed-responsive-1by1">
                 <a href="{{ product_recommend_three.get_absolute_url }}" name="details"><img alt="Card image cap"
                                                                              class="card-img-top embed-responsive-item img-fluid"
@@ -86,7 +90,7 @@
             <a class="card-title" href="{{ product_recommend_three.get_absolute_url }}" name="details">{{product_recommend_three.name}}</a>
             </div>
         </div>
-        <div>
+        <div class="card mx-auto mb-3 bg-dark" style="width:18rem;">
             <div class="embed-responsive embed-responsive-1by1">
                 <a href="{{ product_recommend_four.get_absolute_url }}" name="details"><img alt="Card image cap"
                                                                              class="card-img-top embed-responsive-item img-fluid"

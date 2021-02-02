@@ -163,29 +163,33 @@ class Details(DetailView):
                     recommend_id = d
                     rates.append(recommend_id)
         irates=list(set(rates))
-        asdf=len(irates)
+        asdf=len(irates)-1
                 
         # import pdb ;pdb.set_trace()
         prod=[]
+        prods=[]
         for bb in range(1,asdf):
             product_recommend=Rating.objects.filter (  id=irates[bb] ).last().product
             prod.append(product_recommend)
-        ilist = list(set(prod))
+        # ilist = list(set(prod))
+        for l in prod:
+            if l not in prods:
+                prods.append(l)
 
         # import pdb ;pdb.set_trace()
         if rams =='None' :
             context['score'] = 0
-            context['product_recommend_one']=ilist[0]
-            context['product_recommend_two']=ilist[1]
-            context['product_recommend_three']=ilist[2]
-            context['product_recommend_four']=ilist[3]
+            context['product_recommend_one']=prods[0]
+            context['product_recommend_two']=prods[1]
+            context['product_recommend_three']=prods[2]
+            context['product_recommend_four']=prods[3]
             return context
         else:
             context['score'] = obj.score
-            context['product_recommend_one']=ilist[0]
-            context['product_recommend_two']=ilist[1]
-            context['product_recommend_three']=ilist[2]
-            context['product_recommend_four']=ilist[3]
+            context['product_recommend_one']=prods[0]
+            context['product_recommend_two']=prods[1]
+            context['product_recommend_three']=prods[2]
+            context['product_recommend_four']=prods[3]
             return context
 
 
