@@ -24,7 +24,7 @@ SECRET_KEY = '^_g%33qd(g8bjc+*40&uh(ptgkb$&-*+0!i3$lu7xj1u166cbb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['computerpasal.herokuapp.com']
 
 # Application definition
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -122,6 +123,7 @@ MEDIA_ROOT = BASE_DIR
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'store','static')
 ]
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -131,3 +133,7 @@ EMAIL_HOST_USER = 'pcsort525@gmail.com'
 EMAIL_HOST_PASSWORD = 'mstjohjvhodrcoqr'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+import dj_database_url 
+prod_db  =  dj_database_url.config(conn_max_age=1000)
+DATABASES['default'].update(prod_db)
