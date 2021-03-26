@@ -21,6 +21,6 @@ class Rating (models.Model):
 
 
     def __str__(self):
-        return str ( self.pk )
+        return str ( self.product )
     def RateSubmit(self):
         self.save()

@@ -5,33 +5,33 @@
 {% load cart %}
 {% load custom_filter %}
 <br><br><br>
-<div class="container text-center">
-    <div class="border rounded p-4 m-4 bg-dark">
-        <p class="display-4 pl-4 ml-4">Your Cart</p>
+<div class="container-fluid text-center ">
+    <div class="border rounded p-4 m-4 bg-dark ">
+        <p class="display-4 ">Your Cart</p>
         <hr>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>S.No.</th>
-                <th>Image</th>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-                <th>Add/Remove</th>
+        <table class="table table-borderless ">
+            <thead scope="row">
+            <tr scope="row">
+                <th scope="col">S.No.</th>
+                <th scope="col">Image</th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+                <th scope="col">Add/Remove</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody scope="row">
 
             {% for product in products %}
             <tr>
-                <td>{{forloop.counter}}</td>
-                <td><img alt="" class="rounded-circle" src="{{product.image.url}}" style="height: 50px;"></td>
-                <td>{{product.name}}</td>
-                <td>{{product.price|currency}}</td>
-                <td>{{product|cart_quantity:request.session.cart}}</td>
-                <td>{{product|price_total:request.session.cart|currency}}</td>
-                <td>
+                <td scope="col">{{forloop.counter}}</td>
+                <td scope="col"><img alt="" class="rounded-circle" src="{{product.image.url}}" style="height: 50px;"></td>
+                <td scope="col">{{product.name}}</td>
+                <td scope="col">{{product.price|currency}}</td>
+                <td scope="col">{{product|cart_quantity:request.session.cart}}</td>
+                <td scope="col">{{product|price_total:request.session.cart|currency}}</td>
+                <td scope="col">
                     <form action="/#{{product.id}}" class="col-2 " method="post">
                         {% csrf_token %}
                         <input hidden name='product' type="text" value='{{product.id}}'>
@@ -52,7 +52,7 @@
 
             </tbody>
 
-            <tfoot>
+            <tfoot scope="row">
             <tr>
                 <th colspan="4"></th>
                 <th class="" colspan="">Total</th>

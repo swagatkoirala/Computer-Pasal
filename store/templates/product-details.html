@@ -69,6 +69,9 @@
             <div class="card-body">
             <a class="card-title" href="{{ product_recommend_one.get_absolute_url }}" name="details">{{product_recommend_one.name}}</a>
             </div>
+            <div class="card-body">
+                <p><b>Similarity Score</b> : {{one_ss}}</p>
+            </div>
         </div>
         <div class="card mx-auto mb-3 bg-dark" style="width:18rem;">
             <div class="embed-responsive embed-responsive-1by1">
@@ -78,6 +81,9 @@
             </div>
             <div class="card-body">
             <a class="card-title" href="{{ product_recommend_two.get_absolute_url }}" name="details">{{product_recommend_two.name}}</a>
+            </div>
+            <div class="card-body">
+                <p><b>Similarity Score</b> : {{two_ss}}</p>
             </div>
         </div>
         <div class="card mx-auto mb-3 bg-dark" style="width:18rem;">
@@ -89,6 +95,9 @@
             <div class="card-body">
             <a class="card-title" href="{{ product_recommend_three.get_absolute_url }}" name="details">{{product_recommend_three.name}}</a>
             </div>
+            <div class="card-body">
+                <p><b>Similarity Score</b> : {{three_ss}}</p>
+            </div>
         </div>
         <div class="card mx-auto mb-3 bg-dark" style="width:18rem;">
             <div class="embed-responsive embed-responsive-1by1">
@@ -98,6 +107,9 @@
             </div>
             <div class="card-body">
             <a class="card-title" href="{{ product_recommend_four.get_absolute_url }}" name="details">{{product_recommend_four.name}}</a>
+            </div>
+            <div class="card-body">
+                <p><b>Similarity Score</b> : {{four_ss}}</p>
             </div>
         </div>
         

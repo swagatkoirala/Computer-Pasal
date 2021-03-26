@@ -12,6 +12,7 @@ from store.models.customer import Customer
 from store.models.rating import Rating
 from store.forms import RatingForm
 from django.contrib.auth.decorators import login_required
+import random
 
 
 class Details(DetailView):
@@ -32,10 +33,6 @@ class Details(DetailView):
 
             obj = Rating(product=Product.objects.get(id=el_ids),customer=Customer.objects.get(id=customer),score=vals)
             obj.save()
-            # context ={'obj':obj }
-
-            
-            
             return JsonResponse({'success': 'true', 'score': val}, safe=False)
         else:
             form=RatingForm()
@@ -44,145 +41,83 @@ class Details(DetailView):
     def get_context_data(self, **kwargs):
         context = super(Details, self).get_context_data(**kwargs)
         customer = self.request.session.get('customer')
-        # import pdb ;pdb.set_trace()
+        # SHOWING THE RATING OF THE PRODUCTS
         obj = Rating.objects.filter ( customer=customer , product =context['product'].id ).order_by ( "id" ).last ()
-        rams=str(obj)
-        # my_list=[{'v0': [0, 0]}]
+        index=str(obj)
+
         my_dict={}
         my_list=[]
-        for z in Rating.objects.exclude ( product =context['product'].id ).order_by ( "id" ):
+        # FOR THE LIST OF PRODUCT EXCLUDING OWN PRODUCT
+        for z in Product.objects.exclude ( id =context['product'].id ):
             zz=z.id
             my_list.append(zz)
-        
-        # my=iter(my_list)
-        # import pdb ;pdb.set_trace()
-
-        # vari=Rating.objects.all().order_by ( "id" ).last ().id
-
+        # STORING THE SCORE OF ALL OTHER PRODUCTS WITH THEIR PROD_ID IN DICTIONART
         for x in iter(my_list):
-            # Rating.objects.exclude ( product =context['product'].id ).order_by ( "id" )
-            a=Rating.objects.filter ( product =context['product'].id ).order_by ( "id" ).last()
-            
-            if str(a)!= 'None' and x == Rating.objects.filter(product=context['product'].id).order_by ( "id" ).last ().id :
-                continue
-            objs = Rating.objects.filter (  product =x ).order_by ( "id" ).last ()
+            objs = Rating.objects.filter (  product = x ).last ()
             s=str(objs)
-            # import pdb ;pdb.set_trace()
             if s=='None': 
-                first = 1
-                last = 5
+                first = random.randint(1,5)
+                last = random.randint(1,5)
             else:
                 first = Rating.objects.filter (  product = x ).order_by ( "id" ).first().score
                 last= Rating.objects.filter (  product = x ).order_by ( "id" ).last().score
             this =[first,last]
-            # d = {'v'+str(x): this}
-            # # print(d)
-            # check =dict(d)
-            # my_list.append(check)
             my_dict[str(x)]= this
-        # import pdb ;pdb.set_trace()
+        # FOR FINDING SCORE OF OWN PRODUCT   
         objts = Rating.objects.filter (  product =context['product'].id ).order_by ( "id" ).last ()
         o=str(objts)
         if o=='None': 
-            first = 5
-            last = 1
+            first = random.randint(1,5)
+            last = random.randint(1,5)
         else:
             first = Rating.objects.filter (  product = context['product'].id ).order_by ( "id" ).first().score
             last= Rating.objects.filter (  product = context['product'].id ).order_by ( "id" ).last().score
         v1 = [first,last]
-        # v2=my_dict['5']
-        # import pdb ;pdb.set_trace()
+        # CALCULATING THE COSINE SIMILARITY OF OWN PRODUCT WITH ALL PRODUCT 
         sim_dict ={}
-        ram=[]
         for y in iter(my_list):
-            b=Rating.objects.filter ( product =context['product'].id ).order_by ( "id" ).last()
-            if str(b) != 'None' and y == Rating.objects.filter ( product =context['product'].id ).order_by ( "id" ).last().id :
-                continue
             v2 = my_dict[str(y)]
-            # ob = Rating.objects.filter (  product =y ).order_by ( "id" ).last ()
-            # r=str(ob)
-            # # import pdb ;pdb.set_trace()
-            if v1 == v2 :
-                rate=0.00
-                    
-            else:
-                def cosine_similarity(v1,v2):
-                    sumxx,sumxy,sumyy = 0,0,0
-                    for i in range(len(v1)):
-                        x= v1[i]
-                        y= v2[i]
-                        sumxx += x*x
-                        sumyy += y*y
-                        sumxy += x*y
-                    return sumxy/math.sqrt(sumxx*sumyy)
-                rate = cosine_similarity(v1,v2)
-
-            # print(v1,v2,rate)
+            def cosine_similarity(v1,v2):
+                sumxx,sumxy,sumyy = 0,0,0
+                for i in range(len(v1)):
+                    x= v1[i]
+                    y= v2[i]
+                    sumxx += x*x
+                    sumyy += y*y
+                    sumxy += x*y
+                return sumxy/math.sqrt(sumxx*sumyy)
+            rate = cosine_similarity(v1,v2)
             sim_dict[str(y)]=rate
-            ram.append(rate)
-            # def closest(lst, K): 
-            #     return lst[min(range(len(lst)), key = lambda i: abs(lst[i]-K))]
-            ram.sort(reverse=True)
-            close=ram[0:4]
-            qwerty=len(ram)-1
-
-
-        
-        # for d in sim_dict:
-        #     if sim_dict[d] != ram[0]:
-        #         continue
-        #     else:
-        #         recommend_id_one = d
-                
-
-        # for d in sim_dict:
-        #     if sim_dict[d] != ram[1]:
-        #         continue
-        #     else:
-        #         recommend_id_two = d
-               
-
-        # for d in sim_dict:
-        #     if sim_dict[d] != ram[2]:
-        #         continue
-        #     else:
-        #         recommend_id_three = d
-        # for d in sim_dict:
-        #     if sim_dict[d] != ram[3]:
-        #         continue
-        #     else:
-        #         recommend_id_four = d
-                
-        
-        
-        rates=[]
-        for aa in range(0,qwerty):
-            
-            for d in sim_dict:
-                if sim_dict[d] == ram[aa]:
-                    recommend_id = d
-                    rates.append(recommend_id)
-        irates=list(set(rates))
-        asdf=len(irates)-1
-                
-        # import pdb ;pdb.set_trace()
-        prod=[]
+        # SORTING THE PRODUCT ACCORDING TO THE COSINE SIMILARITY SCORE
+        sorted_dict={}
+        sorted_values=sorted(sim_dict.values(),reverse=True)
+        for i in sorted_values:
+            for k in sim_dict.keys():
+                if sim_dict[str(k)] == i:
+                    sorted_dict[k] = sim_dict[str(k)]
+                    break
+        # LIST OF PRODUCTS OF SORTED DICTIONARY
+        sorted_dictionary=[*sorted_dict]
+        # EXTRACTING THE PRODUCT OBJECT FROM THE PROD_ID INORDER TO SEND TO FRONTEND
         prods=[]
-        for bb in range(1,asdf):
-            product_recommend=Rating.objects.filter (  id=irates[bb] ).last().product
-            prod.append(product_recommend)
-        # ilist = list(set(prod))
-        for l in prod:
-            if l not in prods:
-                prods.append(l)
-
+        for l in sorted_dictionary:
+            product_recommend=Product.objects.get(id=int(l))
+            prods.append(product_recommend)
+        # EXTRACTING SIMILARITY SCORES
+        sim_score=sorted_dict.values()
+        ss=[*sim_score]
         # import pdb ;pdb.set_trace()
-        if rams =='None' :
+        # SENDING RATING AND RECOMMENDED PRODUCT TO THE FRONTEND
+        if index =='None' :
             context['score'] = 0
             context['product_recommend_one']=prods[0]
             context['product_recommend_two']=prods[1]
             context['product_recommend_three']=prods[2]
             context['product_recommend_four']=prods[3]
+            context['one_ss']=ss[0]
+            context['two_ss']=ss[1]
+            context['three_ss']=ss[2]
+            context['four_ss']=ss[3]
             return context
         else:
             context['score'] = obj.score
@@ -190,21 +125,9 @@ class Details(DetailView):
             context['product_recommend_two']=prods[1]
             context['product_recommend_three']=prods[2]
             context['product_recommend_four']=prods[3]
+            context['one_ss']=ss[0]
+            context['two_ss']=ss[1]
+            context['three_ss']=ss[2]
+            context['four_ss']=ss[3]
             return context
-
-
-
-    # def get(self, request,*args,**kwargs):
-    #     # el_id = request.GET.get('el_id')
-    #     # el_ids = request.session.get('el_id')
-        
-    #     obj = Rating.objects.filter ( product=1 ).order_by ( "id" ).last ()
-        
-    #     objs= Product.get_products_by_id
-    #     # import pdb ;pdb.set_trace()
-    #     context = {
-    #         'score': obj.score,
-    #         'product':objs
-    #     }
-    #     return render (request, 'product-details.html' ,context)
 

@@ -9,7 +9,7 @@ class Product(models.Model):
     price = models.IntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=0)
     brands = models.CharField(max_length=100, default='')
-    slug = models.SlugField(blank=True,unique=True)
+    slug = models.SlugField(blank=True,unique=True,default="my-slug-")
     description = models.TextField()
 
     image = models.ImageField(upload_to='uploads/products/')
